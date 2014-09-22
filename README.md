@@ -1,4 +1,4 @@
-Banckle.Chat-SDK-For-PHP
+Banckle.Chat SDK For PHP
 ========================
 
-Banckle.Chat SDK for PHP lets PHP developers to work with Banckle.Chat API's in the cloud quickly and easily.
+This repository contains Banckle.Chat SDK for PHP source code. This SDK allows you to work with Banckle.Chat REST API in your PHP applications quickly and easily.
