@@ -2,7 +2,7 @@
 
 class Product {
 	/*
-	*this property represents the base product uri i.e. http://api.saaspose.com/v1.0
+	*this property represents the base product uri i.e. https://apps.banckle.com/api/v2
 	*you can set this property according to the current version you're using
 	*/
 	// Banckle Account URI
@@ -16,6 +16,9 @@ class Product {
 	*/
 	public static $apiKey = '';
 	
+	/*
+	* Represents session resource for the app.
+	*/
 	public static $xResource = '';
 
 }
