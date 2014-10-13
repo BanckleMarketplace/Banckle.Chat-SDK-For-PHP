@@ -1,5 +1,7 @@
 <?php
 
+namespace Banckle\Chat\Models;
+
 class HttpResponseMessage {
 
   static $swaggerTypes = array(

@@ -1,5 +1,7 @@
 <?php
 
+namespace Banckle\Chat;
+
 class Product {
 	/*
 	*this property represents the base product uri i.e. https://apps.banckle.com/api/v2
@@ -22,4 +24,3 @@ class Product {
 	public static $xResource = '';
 
 }
-?>

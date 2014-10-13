@@ -1,5 +1,7 @@
 <?php
 
+namespace Banckle\Chat;
+
 class OperatorsApi {
 
 	function __construct($apiClient) {

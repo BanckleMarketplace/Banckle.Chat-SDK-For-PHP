@@ -1,5 +1,7 @@
 <?php
 
+namespace Banckle\Chat;
+
 class AuthApi {
 
     function __construct($apiClient) {

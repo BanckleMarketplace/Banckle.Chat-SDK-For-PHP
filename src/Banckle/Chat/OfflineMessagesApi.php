@@ -1,5 +1,7 @@
 <?php
 
+namespace Banckle\Chat;
+
 class OfflineMessagesApi {
 
 	function __construct($apiClient) {

@@ -1,5 +1,7 @@
 <?php
 
+namespace Banckle\Chat;
+
 class SessionApi {
 
 	function __construct($apiClient) {

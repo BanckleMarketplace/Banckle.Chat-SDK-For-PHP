@@ -1,64 +1,25 @@
 <?php
 
-class PluginsApi {
+namespace Banckle\Chat;
+
+class CannedMessagesApi {
 
 	function __construct($apiClient) {
 	  $this->apiClient = $apiClient;
 	}
 
   /**
-	 * getPlugins
-	 * Get all plugins.
-   * version, string: Console version (required)
+	 * createMessage
+	 * Create a new message.
+   * body, body: Message object that needs to be added (required)
 
    * @return object
 	 */
 
-   public function getPlugins($version) {
+   public function createMessage($body) {
 
   		//parse inputs
-  		$resourcePath = "/plugins/version/{version}";
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "GET";
-      $queryParams = array();
-      $headerParams = array();
-      $headerParams['Accept'] = 'application/json';
-      $headerParams['Content-Type'] = 'application/json';
-
-      if($version != null) {
-  			$resourcePath = str_replace("{" . "version" . "}",
-  			                            $this->apiClient->toPathValue($version), $resourcePath);
-  		}
-  		//make the API Call
-      if (! isset($body)) {
-        $body = null;
-      }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
-
-
-      if(! $response){
-          return null;
-        }
-
-  		$responseObject = $this->apiClient->deserialize($response,
-  		                                                'object');
-  		return $responseObject;
-
-      }
-  /**
-	 * activatePlugin
-	 * Activate a plugin.
-   * pluginId, string: Plugin's id to activate (required)
-
-   * @return object
-	 */
-
-   public function activatePlugin($pluginId) {
-
-  		//parse inputs
-  		$resourcePath = "/plugins/{pluginId}";
+  		$resourcePath = "/cannedMessages";
   		$resourcePath = str_replace("{format}", "json", $resourcePath);
   		$method = "POST";
       $queryParams = array();
@@ -66,11 +27,7 @@ class PluginsApi {
       $headerParams['Accept'] = 'application/json';
       $headerParams['Content-Type'] = 'application/json';
 
-      if($pluginId != null) {
-  			$resourcePath = str_replace("{" . "pluginId" . "}",
-  			                            $this->apiClient->toPathValue($pluginId), $resourcePath);
-  		}
-  		//make the API Call
+      //make the API Call
       if (! isset($body)) {
         $body = null;
       }
@@ -89,99 +46,19 @@ class PluginsApi {
 
       }
   /**
-	 * deactivatePlugin
-	 * Deactivate a plugin.
-   * pluginId, string: Plugin's id to deactivate (required)
+	 * updateMessage
+	 * Update a specific message.
+   * messageId, string: The message id (required)
+
+   * body, body: Message object that needs to be updated (required)
 
    * @return object
 	 */
 
-   public function deactivatePlugin($pluginId) {
+   public function updateMessage($messageId, $body) {
 
   		//parse inputs
-  		$resourcePath = "/plugins/{pluginId}";
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "DELETE";
-      $queryParams = array();
-      $headerParams = array();
-      $headerParams['Accept'] = 'application/json';
-      $headerParams['Content-Type'] = 'application/json';
-
-      if($pluginId != null) {
-  			$resourcePath = str_replace("{" . "pluginId" . "}",
-  			                            $this->apiClient->toPathValue($pluginId), $resourcePath);
-  		}
-  		//make the API Call
-      if (! isset($body)) {
-        $body = null;
-      }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
-
-
-      if(! $response){
-          return null;
-        }
-
-  		$responseObject = $this->apiClient->deserialize($response,
-  		                                                'object');
-  		return $responseObject;
-
-      }
-  /**
-	 * getConfiguration
-	 * Get plugin's configuration.
-   * pluginId, string: Plugin's id (required)
-
-   * @return object
-	 */
-
-   public function getConfiguration($pluginId) {
-
-  		//parse inputs
-  		$resourcePath = "/plugins/{pluginId}/config";
-  		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "GET";
-      $queryParams = array();
-      $headerParams = array();
-      $headerParams['Accept'] = 'application/json';
-      $headerParams['Content-Type'] = 'application/json';
-
-      if($pluginId != null) {
-  			$resourcePath = str_replace("{" . "pluginId" . "}",
-  			                            $this->apiClient->toPathValue($pluginId), $resourcePath);
-  		}
-  		//make the API Call
-      if (! isset($body)) {
-        $body = null;
-      }
-  		$response = $this->apiClient->callAPI($resourcePath, $method,
-  		                                      $queryParams, $body,
-  		                                      $headerParams);
-
-
-      if(! $response){
-          return null;
-        }
-
-  		$responseObject = $this->apiClient->deserialize($response,
-  		                                                'object');
-  		return $responseObject;
-
-      }
-  /**
-	 * updateConfiguration
-	 * Update plugin's configuration.
-   * pluginId, string: Plugin's id (required)
-
-   * @return object
-	 */
-
-   public function updateConfiguration($pluginId) {
-
-  		//parse inputs
-  		$resourcePath = "/plugins/{pluginId}/config";
+  		$resourcePath = "/cannedMessages/{messageId}";
   		$resourcePath = str_replace("{format}", "json", $resourcePath);
   		$method = "PUT";
       $queryParams = array();
@@ -189,9 +66,9 @@ class PluginsApi {
       $headerParams['Accept'] = 'application/json';
       $headerParams['Content-Type'] = 'application/json';
 
-      if($pluginId != null) {
-  			$resourcePath = str_replace("{" . "pluginId" . "}",
-  			                            $this->apiClient->toPathValue($pluginId), $resourcePath);
+      if($messageId != null) {
+  			$resourcePath = str_replace("{" . "messageId" . "}",
+  			                            $this->apiClient->toPathValue($messageId), $resourcePath);
   		}
   		//make the API Call
       if (! isset($body)) {
@@ -212,27 +89,103 @@ class PluginsApi {
 
       }
   /**
-	 * likeCounter
-	 * Increase plugin's like counter.
-   * pluginId, string: Plugin's id (required)
-
+	 * getMessages
+	 * Get list of all the available messages.
    * @return object
 	 */
 
-   public function likeCounter($pluginId) {
+   public function getMessages() {
 
   		//parse inputs
-  		$resourcePath = "/plugins/{pluginId}/like";
+  		$resourcePath = "/cannedMessages";
   		$resourcePath = str_replace("{format}", "json", $resourcePath);
-  		$method = "POST";
+  		$method = "GET";
       $queryParams = array();
       $headerParams = array();
       $headerParams['Accept'] = 'application/json';
       $headerParams['Content-Type'] = 'application/json';
 
-      if($pluginId != null) {
-  			$resourcePath = str_replace("{" . "pluginId" . "}",
-  			                            $this->apiClient->toPathValue($pluginId), $resourcePath);
+      //make the API Call
+      if (! isset($body)) {
+        $body = null;
+      }
+  		$response = $this->apiClient->callAPI($resourcePath, $method,
+  		                                      $queryParams, $body,
+  		                                      $headerParams);
+
+
+      if(! $response){
+          return null;
+        }
+
+  		$responseObject = $this->apiClient->deserialize($response,
+  		                                                'object');
+  		return $responseObject;
+
+      }
+  /**
+	 * getMessage
+	 * Get a specific message.
+   * messageId, string: The message id (required)
+
+   * @return object
+	 */
+
+   public function getMessage($messageId) {
+
+  		//parse inputs
+  		$resourcePath = "/cannedMessages/{messageId}";
+  		$resourcePath = str_replace("{format}", "json", $resourcePath);
+  		$method = "GET";
+      $queryParams = array();
+      $headerParams = array();
+      $headerParams['Accept'] = 'application/json';
+      $headerParams['Content-Type'] = 'application/json';
+
+      if($messageId != null) {
+  			$resourcePath = str_replace("{" . "messageId" . "}",
+  			                            $this->apiClient->toPathValue($messageId), $resourcePath);
+  		}
+  		//make the API Call
+      if (! isset($body)) {
+        $body = null;
+      }
+  		$response = $this->apiClient->callAPI($resourcePath, $method,
+  		                                      $queryParams, $body,
+  		                                      $headerParams);
+
+
+      if(! $response){
+          return null;
+        }
+
+  		$responseObject = $this->apiClient->deserialize($response,
+  		                                                'object');
+  		return $responseObject;
+
+      }
+  /**
+	 * deleteMessage
+	 * Delete a specific message.
+   * messageId, string: The message id (required)
+
+   * @return object
+	 */
+
+   public function deleteMessage($messageId) {
+
+  		//parse inputs
+  		$resourcePath = "/cannedMessages/{messageId}";
+  		$resourcePath = str_replace("{format}", "json", $resourcePath);
+  		$method = "DELETE";
+      $queryParams = array();
+      $headerParams = array();
+      $headerParams['Accept'] = 'application/json';
+      $headerParams['Content-Type'] = 'application/json';
+
+      if($messageId != null) {
+  			$resourcePath = str_replace("{" . "messageId" . "}",
+  			                            $this->apiClient->toPathValue($messageId), $resourcePath);
   		}
   		//make the API Call
       if (! isset($body)) {

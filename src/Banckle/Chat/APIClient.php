@@ -1,25 +1,6 @@
 <?php
-/**
- * APIClient.php
- */
 
-
-/* Autoload the model definition files */
-/**
- *
- *
- * @param string $className the class to attempt to load
- */
-function swagger_autoloader($className) {
-	$currentDir = dirname(__FILE__);
-	if (file_exists($currentDir . '/' . $className . '.php')) {
-		include $currentDir . '/' . $className . '.php';
-	} elseif (file_exists($currentDir . '/models/' . $className . '.php')) {
-		include $currentDir . '/models/' . $className . '.php';
-	}
-}
-spl_autoload_register('swagger_autoloader');
-
+namespace Banckle\Chat;
 
 class APIClient {
 

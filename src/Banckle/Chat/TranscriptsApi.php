@@ -1,5 +1,7 @@
 <?php
 
+namespace Banckle\Chat;
+
 class TranscriptsApi {
 
 	function __construct($apiClient) {

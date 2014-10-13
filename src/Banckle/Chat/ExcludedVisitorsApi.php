@@ -1,5 +1,7 @@
 <?php
 
+namespace Banckle\Chat;
+
 class ExcludedVisitorsApi {
 
 	function __construct($apiClient) {
